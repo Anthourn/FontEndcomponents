@@ -1,0 +1,143 @@
+.App {
+  text-align: center;
+}
+
+ /*  css reset */
+
+ /*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  5. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  6. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+  font: inherit;
+}
+/*
+  7. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+@font-face {
+  font-family: "InconsolataRegular";
+  src: local("InconsolataRegular"),
+  url("./fonts/inconsolata/static/Inconsolata-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"),
+  url("./fonts/inter/static/Inter-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "InconsolataRegular";
+  src: local("InconsolataRegular"),
+  url("./fonts/inconsolata/static/Inconsolata-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-display: swap;
+}
+
+:root {
+  --black900: hsl(0, 0%, 2%);
+  --black800: hsl(0, 0%, 12%);
+  --black700: hsl(0, 0%, 18%);
+  --black600: hsl(0, 0%, 23%);
+
+  --grey500:hsl(0, 0%, 51%);
+  --grey200: hsl(0, 0%, 91%);
+  --grey100: hsl(0, 0%, 96%);
+
+  --white: hsl(0, 0%, 100%);
+
+  --color-primary: hsl(274, 82%, 60%);
+  --color-secondary: hsl(0,100%,66%);
+
+  --font-mono:  InconsolataRegular;
+  --font-sans-seriff: Inter;
+
+}
+/* general styles */
+.container{
+  padding: 1.5rem;
+  /* padding: 3.6rem; */
+  display: flex;
+  flex-direction: column;
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: ;
+}
+.header__controls{
+  display: flex;
+  flex-direction: row;
+}
+.header__custom-select{
+  width: 10rem;
+  border-right: 1px solid;
+  padding-bottom: 1.75rem;
+  border-color: var(--grey200) ;
+}
+
+.react-select__menu-list{
+  border-radius: 1rem;
+background: var(--FFFFFF, #FFF);
+box-shadow: 0px 5px 30px 0px rgba(0, 0, 0, 0.10);
+/* width: 11.4375rem; */
+/* height: 9.5rem; */
+padding: 1.5rem;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+.react-select__menu-list-dark{
+  border-radius: 1rem;
+background: var(--black800);
+box-shadow: 0px 5px 30px 0px #A445ED;
+/* width: 11.4375rem; */
+/* height: 9.5rem; */
+padding: 1.5rem;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+.react-select-sans-seriff{
+  font-family: var(--font-sans-seriff) !important;
+}
+.react-select-seriff{
+  font-family: var(--font-seriff) !important;
+}
+.react-select-mono{
+  font-family: var(--font-mono) !important;
+}
