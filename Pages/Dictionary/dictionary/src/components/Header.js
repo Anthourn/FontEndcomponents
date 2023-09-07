@@ -1,8 +1,16 @@
 import Select from "react-select";
-import { components, DropdownIndicatorProps, OptionProps } from "react-select";
-import { CSSProperties } from "react";
+import {
+  components,
+  DropdownIndicatorProps,
+  OptionProps,
+  MenuListProps,
+} from "react-select";
+import { useState } from "react";
 
 const Header = () => {
+  const [darkmode, toggleDarkmode] = useState(false);
+
+  // 1
   const Option = (props) => {
     return (
       <div
@@ -13,6 +21,16 @@ const Header = () => {
       >
         <components.Option {...props} />
       </div>
+    );
+  };
+  const MenuList = (props) => {
+    return (
+      <components.MenuList
+        className={
+          darkmode ? "react-select__menu-list-dark" : "react-select__menu-list"
+        }
+        {...props}
+      />
     );
   };
   const options = [
@@ -60,31 +78,77 @@ const Header = () => {
       />
     </svg>
   );
+  const darkmodeButton = (
+    <button
+      aria-label="dark  mode toggle"
+      onClick={() => toggleDarkmode(!darkmode)}
+      className="header__dark-mode-toggle"
+    >
+      {darkmode ? (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="73"
+          height="22"
+          viewBox="0 0 73 22"
+          fill="none"
+        >
+          <rect y="1" width="40" height="20" rx="10" fill="#A445ED" />
+          <circle cx="30" cy="11" r="7" fill="white" />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M52 10.449C51.9985 12.8283 52.8017 15.1383 54.2791 17.0033C55.7566 18.8683 57.8214 20.1788 60.138 20.7218C62.4545 21.2647 64.8866 21.0082 67.039 19.994C69.1912 18.9797 70.9373 17.2673 71.9931 15.1352C62.5442 15.1352 57.858 10.4479 57.858 1C56.0984 1.87311 54.6177 3.22033 53.5827 4.88981C52.5476 6.5593 51.9995 8.48469 52 10.449Z"
+            stroke="#A445ED"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      ) : (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="73"
+          height="22"
+          viewBox="0 0 73 22"
+          fill="none"
+        >
+          <rect y="1" width="40" height="20" rx="10" fill="#757575" />
+          <circle cx="10" cy="11" r="7" fill="white" />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M52 10.449C51.9985 12.8283 52.8017 15.1383 54.2791 17.0033C55.7566 18.8683 57.8214 20.1788 60.138 20.7218C62.4545 21.2647 64.8866 21.0082 67.039 19.994C69.1912 18.9797 70.9373 17.2673 71.9931 15.1352C62.5442 15.1352 57.858 10.4479 57.858 1C56.0984 1.87311 54.6177 3.22033 53.5827 4.88981C52.5476 6.5593 51.9995 8.48469 52 10.449Z"
+            stroke="#757575"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      )}
+    </button>
+  );
   return (
     <header className="header">
-      {/* Aliquam */}
       {dictionaryIcon}
       <div className="header__controls">
         <div className="header__custom-select">
           <Select
+            aria-label="font selector"
             defaultValue={options[0]}
             isSearchable={false}
             classNamePrefix="react-select"
             unstyled
-            components={{ DropdownIndicator, Option }}
+            components={{ DropdownIndicator, Option, MenuList }}
             options={options}
           />
         </div>
-        <section className="header__buttons">
-          <label className="header__switch">
-            <input type="checkbox" />
-            <span className="header__slider round"></span>
-          </label>
-        </section>
-        <button className="header__dark-mode"></button>
+
+        {darkmodeButton}
       </div>
     </header>
   );
 };
 
 export default Header;
+
+// 1: I needed to add classnames to each option so they could maintain their own font, so i made option a custom component where the div has a classname that comes from the option object
