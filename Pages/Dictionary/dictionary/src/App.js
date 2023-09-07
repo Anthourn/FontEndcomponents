@@ -6,6 +6,8 @@ import Header from "./components/Header";
 import PrimaryDefinition from "./components/PrimaryDefinition";
 import SecondaryDefinition from "./components/SecondaryDefinition";
 import Attribution from "./components/Attribution";
+import Search from "./components/Search";
+
 function App() {
   console.log(definition);
   // const [data, setData] = useState(null);
@@ -23,10 +25,9 @@ function App() {
       <div className="container">
         {/* {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : "Loading..."} */}
         <Header />
-        <Title />
+        <Search />
         <main>
-          {" "}
-          <PrimaryDefinition />
+          <Title /> <PrimaryDefinition />
           <SecondaryDefinition />
         </main>
 
