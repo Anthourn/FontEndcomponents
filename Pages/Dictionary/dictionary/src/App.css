@@ -45,6 +45,13 @@ p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
 @font-face {
+  font-family: "InconsolataBold";
+  src: local("InconsolataBold"),
+  url("./fonts/inconsolata/static/Inconsolata-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-display: swap;
+}
+@font-face {
   font-family: "InconsolataRegular";
   src: local("InconsolataRegular"),
   url("./fonts/inconsolata/static/Inconsolata-Regular.ttf") format("truetype");
@@ -59,10 +66,32 @@ p, h1, h2, h3, h4, h5, h6 {
   font-display: swap;
 }
 @font-face {
-  font-family: "InconsolataRegular";
-  src: local("InconsolataRegular"),
-  url("./fonts/inconsolata/static/Inconsolata-Regular.ttf") format("truetype");
+  font-family: "InterBold";
+  src: local("InterBold"),
+  url("./fonts/inter/static/Inter-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MonoRegular";
+  src: local("MonoRegular"),
+  url("./fonts/lora/static/Lora-Regular.ttf") format("truetype");
   font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MonoBold";
+  src: local("MonoBold"),
+  url("./fonts/lora/static/Lora-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MonoBoldItalic";
+  src: local("MonoBoldItalic"),
+  url("./fonts/lora/static/Lora-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
   font-display: swap;
 }
 
@@ -73,6 +102,7 @@ p, h1, h2, h3, h4, h5, h6 {
   --black600: hsl(0, 0%, 23%);
 
   --grey500:hsl(0, 0%, 51%);
+  --grey450:hsl(0, 0%, 46%);
   --grey200: hsl(0, 0%, 91%);
   --grey100: hsl(0, 0%, 96%);
 
@@ -82,10 +112,40 @@ p, h1, h2, h3, h4, h5, h6 {
   --color-secondary: hsl(0,100%,66%);
 
   --font-mono:  InconsolataRegular;
-  --font-sans-seriff: Inter;
+  --font-mono-bold:  InconsolataBold;
+  --font-mono-bold-italic: MonoBoldItalic;
+  --font-sans-seriff: InterRegular;
+  --font-sans-seriff-bold: InterBold;
+  --font-seriff: LoraRegular;
+  --font-seriff-bold: LoraBold;
+  --font-seriff-bold-italic: LoraBoldItalic;
 
 }
 /* general styles */
+.bodySeriffLight{
+font-family: var(--font-seriff);
+color:var(--black700) ;
+}
+.bodySeriffDark{
+  font-family: var(--font-seriff);
+  color:var(--white) ;
+  }
+.bodySansSeriffLight{
+  font-family: var(--font-sans-seriff);
+  color:var(--black700) ;
+}
+.bodySansSeriffDark{
+  font-family: var(--font-sans-seriff);
+  color:var(--white) ;
+}
+.bodyMonoLight{
+  font-family: var(--font-mono);
+  color:var(--black700) ;
+}
+.bodyMonoDark{
+  font-family: var(--font-mono);
+  color:var(--white) ;
+}
 .container{
   padding: 1.5rem;
   /* padding: 3.6rem; */
@@ -173,10 +233,17 @@ gap: 1rem;
   padding-top: .5rem;
   margin-left: 1rem;
 }
+.search{
+  position: relative;
+  margin-bottom: 1.5rem ;
 
+}
+/* make this change with global font */
 .search__input{
   width: 100%;
   border-radius: 1rem;
+  font-family: var(--font-mono-bold);
+  font-size: 1rem;
   background-color: var(--grey200);
   color: var(--black700);
   border: 1px solid;
@@ -190,6 +257,10 @@ gap: 1rem;
   border: 1px solid;
   border-color: var(--color-primary);
 }
+.search__input-error{
+  border: 1px solid;
+  border-color: var(--color-secondary) !important;
+}
 
 
 .search__input[data-icon="search"]::before{
@@ -197,4 +268,162 @@ gap: 1rem;
   width:15px;
   height: 16px;
   background-image: url("/public/assets/images/icon-search.svg");
+}
+.search__button{
+  position: absolute;
+  right: 1.5rem;
+  border: none;
+  background: transparent;
+  top: 25%;
+}
+
+.title{
+  padding-bottom: 1.83rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.title__main-seriff{
+  font-family: var(--font-seriff-bold);
+  font-size: 2rem ;
+}
+.title__main-mono{
+  font-family: var(--font-sans-mono-bold);
+  font-size: 2rem ;
+
+}
+.title__main-sans-seriff{
+  font-family: var(--font-sans-seriff-bold);
+  font-size: 2rem ;
+}
+.title__pronunciation{
+  color: var(--color-primary);
+  font-size: 1.125rem;
+}
+.title__button-play{
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  height: 3rem;
+  width: 3rem;
+}
+.primary-definition{
+  padding-bottom: 1.94rem;
+}
+.primary-definition__category{
+  padding-bottom: 2.06rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.seperator{
+width: 16.25rem;
+height: 1px;
+background-color: var(--grey200) ;
+align-self: center;
+}
+.primary-definition__mono {
+  font-family: var(--font-mono-bold);
+  font-size: 1.125rem ;
+}
+.primary-definition__seriff {
+  font-family: var(--font-seriff-bold);
+  font-size: 1.125rem ;
+  font-style: italic;
+}
+
+.primary-definition__mono-italic {
+  font-family: var(--font-mono-bold-italic);
+  font-size: 1.125rem ;
+}
+
+.primary-definition ul {
+  list-style: none; 
+}
+.secondary-definition ul {
+  list-style: none; 
+}
+.primary-definition li {
+  margin-left: -1.5em; 
+}
+.secondary-definition li {
+  margin-left: -1.5em; 
+}
+
+.secondary-definition li{
+  color: var(--black700);
+  font-size: 0.9375rem;
+  line-height: 1.5rem;
+}
+
+.primary-definition li{
+  color: var(--black700);
+  font-size: 0.9375rem;
+  line-height: 1.5rem;
+}
+.meaning{
+  color: var(--grey450);
+}
+
+ul li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: var(--color-primary); /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 2em; /* Also needed for space (tweak if needed) */
+  margin-left: -1.3em; 
+  position: relative;
+  top:1.25rem;
+}
+.synonyms{
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.synonym-title{
+  color: var(--grey450);
+
+}
+.synonym-definition{
+  color: var(--color-primary);
+
+}
+.secondary-definition__category{
+  padding-top: 2.06rem ;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.secondary-definition .meaning{
+  padding-top: 1.94rem;
+  padding-bottom: 1.04rem;
+}
+
+.secondary-definition .seperator{
+  margin-top: 2.44rem;
+  margin-bottom: 1.3rem;
+}
+.footer{
+  padding-bottom: 4.25rem;
+}
+.footer__source{
+  display: block;
+  text-decoration: none;
+  text-decoration: underline;
+  color: var(--grey450) ;
+  font-size: 0.875rem;
+}
+.footer__link{
+  display: inline-block;
+  text-decoration: none;
+  text-decoration: underline;
+  font-size: 0.875rem;
+}
+.footer__external{
+  display: inline-block;
+  background: transparent;
+  padding: 0;
+  margin-left: .5rem;
+  border: none;
 }
