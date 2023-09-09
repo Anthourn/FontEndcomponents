@@ -3,7 +3,7 @@ const SecondaryDefinition = () => {
     <section className="secondary-definition">
       <div className="secondary-definition__category">
         <p> verb</p>
-        <div className="seperator" />
+        <div className="seperator top-seperator" />
       </div>
       <p className="meaning"> Meaning</p>
       <ul>
@@ -27,7 +27,7 @@ const SecondaryDefinition = () => {
           </p>
         </li>
       </ul>
-      <div className="seperator"></div>
+      <div className="seperator bottom-seperator"></div>
     </section>
   );
 };

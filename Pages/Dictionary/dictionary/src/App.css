@@ -152,12 +152,33 @@ color:var(--black700) ;
   display: flex;
   flex-direction: column;
 }
+.container-dark{
+  background-color: var(--black900);
+  color: var(--white);
+}
+
+.container-mono{
+  font-family: var(--font-mono);
+}
+.container-seriff{
+  font-family: var(--font-seriff);
+}
+.container-sans-seriff{
+font-family: var(--font-sans-seriff);
+}
+
 
 .header{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding-bottom: 1.75rem;
+}
+.header__dict-icon{
+  width: 1.75344rem;
+}
+.header__custom-select{
+  font-size: 0.875rem;
 }
 .header__controls{
   display: flex;
@@ -405,7 +426,7 @@ ul li::before {
   margin-bottom: 1.3rem;
 }
 .footer{
-  padding-bottom: 4.25rem;
+  padding-bottom: 2.7rem;
 }
 .footer__source{
   display: block;
@@ -426,4 +447,101 @@ ul li::before {
   padding: 0;
   margin-left: .5rem;
   border: none;
+}
+
+@media screen and (min-width: 700px) {
+  .container{
+    padding: 2.44rem ;
+  }
+  .header__dict-icon{
+    width: 2rem;
+  }
+  .header__custom-select{
+    font-size: 1.125rem;
+  }
+  .search__input{
+    font-size: 1.125rem;
+  }
+
+  .title__main-seriff{
+    font-size: 4rem ;
+  }
+  .title__main-mono{
+    font-size: 4rem ;
+  
+  }
+  .title__main-sans-seriff{
+    font-size: 4rem ;
+  }
+  .title__pronunciation{
+    font-size: 1.5rem;
+  }
+  .title__button-play{
+    height: 4.6875rem;
+    width: 4.6875rem;
+    align-self: center;
+  }
+  .title__button{
+    align-self: center;
+  }
+  .seperator{
+    width: 38rem;
+  }
+  .title{
+    padding-bottom: 2.4rem;
+  }
+
+
+  
+  .secondary-definition li{
+    font-size: 1.125rem;
+  }
+  
+  .primary-definition li{
+    font-size: 1.125rem;
+  }
+  .meaning{
+    font-size:1.125rem;
+  }
+  
+
+  .synonym-title{
+    font-size: 1.125rem;
+  
+  }
+  .synonym-definition{
+    font-size: 1.125rem;
+  }
+
+  .secondary-definition__category{
+    padding-top: 2.69rem ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .secondary-definition .meaning{
+    padding-top: 1.94rem;
+    padding-bottom: 1.04rem;
+  }
+  
+  .secondary-definition .top-seperator{
+    margin-top: 0;
+    align-self: center;
+    margin-bottom: 0;
+  }
+  .secondary-definition .bottom-seperator{
+    margin-top: 2.4rem;
+    align-self: center;
+  }
+  .footer{
+    padding-bottom: 4.34rem;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .container{
+    padding-top: 3.6rem ;
+    margin-left: auto;
+    margin-right: auto;
+    width: 49.6rem;
+  }
 }
