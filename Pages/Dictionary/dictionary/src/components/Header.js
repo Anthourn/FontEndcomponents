@@ -6,9 +6,14 @@ import {
   MenuListProps,
 } from "react-select";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { flip } from "../darkmodeSlice";
+import { seriff, sansSeriff, mono } from "../fontSlice";
 
 const Header = () => {
-  const [darkmode, toggleDarkmode] = useState(false);
+  const dispatch = useDispatch();
+  const darkmode = useSelector((state) => state.darkmode.value);
+  const font = useSelector((state) => state.font.value);
 
   // 1
   const Option = (props) => {
@@ -18,6 +23,7 @@ const Header = () => {
         style={{
           fontFamily: props.data.fontFamily,
         }}
+        onClick={props.data.onClick}
       >
         <components.Option {...props} />
       </div>
@@ -38,9 +44,20 @@ const Header = () => {
       value: "Sans-Seriff",
       label: "Sans Seriff",
       className: "react-select-sans-seriff",
+      onClick: () => dispatch(sansSeriff()),
     },
-    { value: "Seriff", label: "Seriff", className: "react-select-seriff" },
-    { value: "Mono", label: "Mono", className: "react-select-mono" },
+    {
+      value: "Seriff",
+      label: "Seriff",
+      className: "react-select-seriff",
+      onClick: () => dispatch(seriff()),
+    },
+    {
+      value: "Mono",
+      label: "Mono",
+      className: "react-select-mono",
+      onClick: () => dispatch(mono()),
+    },
   ];
 
   const DropdownIndicator = (props) => {
@@ -81,10 +98,10 @@ const Header = () => {
   const darkmodeButton = (
     <button
       aria-label="dark  mode toggle"
-      onClick={() => toggleDarkmode(!darkmode)}
+      onClick={() => dispatch(flip(), console.log(darkmode))}
       className="header__dark-mode-toggle"
     >
-      {darkmode ? (
+      {darkmode === true ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="73"

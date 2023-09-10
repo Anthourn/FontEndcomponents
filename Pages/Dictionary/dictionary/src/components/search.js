@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Search = () => {
+  const darkmode = useSelector((state) => state.darkmode.value);
+
   const [errorState, setErrorState] = useState(false);
   const searchIcon = (
     <svg
@@ -22,7 +25,9 @@ const Search = () => {
   return (
     <form className="search">
       <input
-        className={`search__input ${errorState ? "search__input-error" : ""}`}
+        className={`search__input ${darkmode ? "search__input-dark" : ""} ${
+          errorState ? "search__input-error" : ""
+        }`}
         dataIcon="search"
         placeholder="Search for any word..."
       ></input>
