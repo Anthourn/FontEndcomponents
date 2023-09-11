@@ -10,10 +10,10 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 function App() {
+  const searchData = useSelector((state) => state.data.value);
   const font = useSelector((state) => state.font.value);
   const darkmode = useSelector((state) => state.darkmode.value);
-  const input = "keyboard";
-  console.log(font, darkmode);
+  const input = useSelector((state) => state.input.value);
   const [data, setData] = useState(definition);
   const API_KEY = process.env.REACT_APP_API_KEY;
   useEffect(() => {
@@ -24,15 +24,15 @@ function App() {
       .then((json) => setData(json))
       .catch((error) => console.error(error));
   }, [input]);
-  console.log(data);
+  console.log(data[0]);
   return (
     <body>
       <div className={`container ${darkmode ? "container-dark" : ""} ${font}`}>
-        <Header darkmode={darkmode} />
-        <Search />
+        <Header />
+        <Search updateData={setData} />
         <main>
-          <Title /> <PrimaryDefinition />
-          <SecondaryDefinition />
+          <Title data={data[0]} /> <PrimaryDefinition data={data[0]} />
+          <SecondaryDefinition data={data[1]} />
         </main>
 
         <Attribution />

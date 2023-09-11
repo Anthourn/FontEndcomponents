@@ -1,7 +1,32 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { update } from "../inputSlice";
+import { seed } from "../dataSlice";
 
-const Search = () => {
+const Search = (updateData) => {
+  const dispatch = useDispatch();
+  const input = useSelector((state) => state.input.value);
+  const API_KEY = process.env.REACT_APP_API_KEY;
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const formJson = Object.fromEntries(formData.entries());
+    console.log(formJson);
+    if (formJson.searchTerm.length > 0) {
+      dispatch(update(formJson.searchTerm));
+      fetch(
+        `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${formJson.searchTerm}?key=${API_KEY}`
+      )
+        .then((response) => response.json())
+        .then((json) => updateData(json))
+        .catch((error) => console.error(error));
+    } else {
+      setErrorState(true);
+    }
+  }
+
   const darkmode = useSelector((state) => state.darkmode.value);
 
   const [errorState, setErrorState] = useState(false);
@@ -23,8 +48,9 @@ const Search = () => {
     </svg>
   );
   return (
-    <form className="search">
+    <form onSubmit={handleSubmit} className="search">
       <input
+        name="searchTerm"
         className={`search__input ${darkmode ? "search__input-dark" : ""} ${
           errorState ? "search__input-error" : ""
         }`}

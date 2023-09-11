@@ -5,7 +5,6 @@ import {
   OptionProps,
   MenuListProps,
 } from "react-select";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { flip } from "../darkmodeSlice";
 import { seriff, sansSeriff, mono } from "../fontSlice";
