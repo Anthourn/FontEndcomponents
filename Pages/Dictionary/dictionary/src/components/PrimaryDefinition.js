@@ -1,6 +1,3 @@
-import definition from "../example";
-import { useSelector, useDispatch } from "react-redux";
-
 const PrimaryDefinition = ({ data }) => {
   const definitions = data.shortdef.map((definition, i) => {
     return (

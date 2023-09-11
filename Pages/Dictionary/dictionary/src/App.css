@@ -135,9 +135,18 @@ font-family: var(--font-seriff);
   font-family: var(--font-mono);
 
 }
-
+body{
+  height: 100%;
+  width: 100%;
+}
+.body-dark{
+  background-color: var(--black900);
+  color: var(--white);
+}
 .container{
   padding: 1.5rem;
+
+  text-wrap: wrap;
   /* padding: 3.6rem; */
   display: flex;
   color: var(--black700);
@@ -440,7 +449,26 @@ ul li::before {
   margin-left: .5rem;
   border: none;
 }
-
+.error{
+  text-align: center;
+  height: 100vh;
+}
+.error__emoji{
+  font-size: 4rem;
+  margin-bottom: 2.75rem;
+}
+.error__title{
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.error__copy{
+  font-size: 1.125rem;
+  color: var(--grey450);
+}
+.error-msg{
+  color: var(--color-secondary);
+  font-size: 1.25rem;
+}
 @media screen and (min-width: 700px) {
   .container{
     padding: 2.44rem ;

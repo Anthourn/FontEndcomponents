@@ -1,27 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { update } from "../inputSlice";
-import { seed } from "../dataSlice";
 
-const Search = (updateData) => {
+const Search = () => {
   const dispatch = useDispatch();
-  const input = useSelector((state) => state.input.value);
-  const API_KEY = process.env.REACT_APP_API_KEY;
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const formJson = Object.fromEntries(formData.entries());
-    console.log(formJson);
     if (formJson.searchTerm.length > 0) {
       dispatch(update(formJson.searchTerm));
-      fetch(
-        `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${formJson.searchTerm}?key=${API_KEY}`
-      )
-        .then((response) => response.json())
-        .then((json) => updateData(json))
-        .catch((error) => console.error(error));
     } else {
       setErrorState(true);
     }
@@ -57,6 +47,7 @@ const Search = (updateData) => {
         dataIcon="search"
         placeholder="Search for any word..."
       ></input>
+      {errorState ? <p className="error-msg">cant be empty...</p> : ""}
       <button className="search__button" type="submit">
         {searchIcon}
       </button>
