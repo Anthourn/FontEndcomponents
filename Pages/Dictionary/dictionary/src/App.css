@@ -469,6 +469,19 @@ ul li::before {
   color: var(--color-secondary);
   font-size: 1.25rem;
 }
+.bold-sans-seriff{
+  font-family: var(--font-sans-seriff-bold);
+  font-size: 1.125rem ;
+}
+.bold-seriff{
+  font-family: var(--font-seriff-bold);
+  font-size: 1.125rem ;
+
+}
+.bold-mono{
+  font-family: var(--font-mono-bold);
+  font-size: 1.125rem ;
+}
 @media screen and (min-width: 700px) {
   .container{
     padding: 2.44rem ;
@@ -510,7 +523,19 @@ ul li::before {
   .title{
     padding-bottom: 2.4rem;
   }
-
+  .bold-sans-seriff{
+    font-family: var(--font-sans-seriff-bold);
+    font-size: 1.5rem ;
+  }
+  .bold-seriff{
+    font-family: var(--font-seriff-bold);
+    font-size: 1.5rem ;
+  
+  }
+  .bold-mono{
+    font-family: var(--font-mono-bold);
+    font-size: 1.5rem ;
+  }
 
   
   .secondary-definition li{

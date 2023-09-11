@@ -1,4 +1,7 @@
+import { useSelector } from "react-redux";
+
 const PrimaryDefinition = ({ data }) => {
+  const font = useSelector((state) => state.font.value);
   const definitions = data.shortdef.map((definition, i) => {
     return (
       <li key={i}>
@@ -9,7 +12,7 @@ const PrimaryDefinition = ({ data }) => {
   return (
     <section className="primary-definition">
       <div className="primary-definition__category">
-        <p>{data.fl}</p>
+        <p className={`bold-${font}`}>{data.fl}</p>
         <div className="seperator" />
       </div>
       <p className="meaning"> Meaning</p>

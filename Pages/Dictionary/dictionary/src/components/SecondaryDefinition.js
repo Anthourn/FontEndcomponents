@@ -1,4 +1,8 @@
+import { useSelector } from "react-redux";
+
 const SecondaryDefinition = ({ data }) => {
+  const font = useSelector((state) => state.font.value);
+
   const definitions = data.shortdef.map((definition, i) => {
     return (
       <li key={i}>
@@ -9,7 +13,7 @@ const SecondaryDefinition = ({ data }) => {
   return (
     <section className="secondary-definition">
       <div className="secondary-definition__category">
-        <p>{data.fl}</p>
+        <p className={`bold-${font}`}>{data.fl}</p>
         <div className="seperator top-seperator" />
       </div>
       <p className="meaning"> Meaning</p>
