@@ -19,8 +19,8 @@ const PrimaryDefinition = ({ data }) => {
 
       <ul>{definitions}</ul>
       <div className="synonyms">
-        <p className="synonym-title">Synonyms</p>
-        <p className="synonym-definition"> Electronic Keyboard</p>
+        <p className="synonym-title">Section</p>
+        <p className="synonym-definition"> {data.meta.section}</p>
       </div>
     </section>
   );

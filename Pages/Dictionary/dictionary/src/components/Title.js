@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-const Title = (data) => {
+const Title = ({ data }) => {
   const input = useSelector((state) => state.input.value);
   const font = useSelector((state) => state.font.value);
   const capitalizedTitle = input.charAt(0).toUpperCase() + input.slice(1);
-  const pronunciation = data.data.hwi.prs[0].mw;
-
+  const pronunciation = data.hwi.prs ? data.hwi.prs[0].mw : data.hwi.hw;
+  console.log("title", data);
   return (
     <div className="title">
       <div className="title__text">

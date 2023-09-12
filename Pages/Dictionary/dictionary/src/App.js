@@ -30,9 +30,13 @@ function App() {
   }, [input]);
   console.log("data", data);
   const routeContent = () => {
-    if (data[0].fl) {
+    // account for api auto correcting instead of returning undefined
+    if (data[0] === undefined || typeof data[0] === "string") {
+      return <Error />;
+    } else {
       return (
         <main>
+          {data[0].fl}
           {data[0].fl ? (
             <>
               <Title data={data[0]} /> <PrimaryDefinition data={data[0]} />
@@ -47,8 +51,6 @@ function App() {
           <Attribution />
         </main>
       );
-    } else {
-      return <Error />;
     }
   };
   return (
